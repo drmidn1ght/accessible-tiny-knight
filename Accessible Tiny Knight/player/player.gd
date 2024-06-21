@@ -183,9 +183,9 @@ func damage(amount: int) -> void:
 	if health <= 0: return
 	
 	health -= amount
-	print("Player recebeu dano de ", amount, ". A vida total é de ", health, "/", max_health)
+	print("Você recebeu dano de ", amount, ". A vida total é de ", health, "/", max_health)
 	
-	# Piscar node
+	# Piscar o node quando receber dano
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
@@ -206,7 +206,7 @@ func die() -> void:
 		death_object.position = position
 		get_parent().add_child(death_object)
 	
-	print("Player morreu!")
+	print("Você morreu!")
 	queue_free()
 
 
@@ -215,7 +215,7 @@ func heal(amount: int) -> int:
 	health += amount
 	if health > max_health:
 		health = max_health
-	print("Player recebeu cura de ", amount, ". A vida total é de ", health, "/", max_health)
+	print("Você recebeu cura de ", amount, ". A vida total é de ", health, "/", max_health)
 	return health
 
 
