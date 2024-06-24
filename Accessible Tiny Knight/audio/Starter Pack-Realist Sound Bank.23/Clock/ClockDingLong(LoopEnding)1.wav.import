@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6js44j7a7qfa"
+path="res://.godot/imported/ClockDingLong(LoopEnding)1.wav-c320249974475c5a3e58aefea5db7dfe.sample"
+
+[deps]
+
+source_file="res://audio/Starter Pack-Realist Sound Bank.23/Clock/ClockDingLong(LoopEnding)1.wav"
+dest_files=["res://.godot/imported/ClockDingLong(LoopEnding)1.wav-c320249974475c5a3e58aefea5db7dfe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

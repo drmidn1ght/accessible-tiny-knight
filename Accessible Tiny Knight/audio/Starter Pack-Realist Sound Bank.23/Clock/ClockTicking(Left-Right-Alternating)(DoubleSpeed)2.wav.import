@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dd16328hj16dx"
+path="res://.godot/imported/ClockTicking(Left-Right-Alternating)(DoubleSpeed)2.wav-fb3d1b6e703a7d44590f3e2de3e68473.sample"
+
+[deps]
+
+source_file="res://audio/Starter Pack-Realist Sound Bank.23/Clock/ClockTicking(Left-Right-Alternating)(DoubleSpeed)2.wav"
+dest_files=["res://.godot/imported/ClockTicking(Left-Right-Alternating)(DoubleSpeed)2.wav-fb3d1b6e703a7d44590f3e2de3e68473.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

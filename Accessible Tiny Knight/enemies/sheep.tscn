@@ -8,6 +8,7 @@
 
 # Node  de áudio 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/sheep-1-89229.mp3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/Sheep Bleating-SoundBible.com-1373580685.wav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3apl4"]
 atlas = ExtResource("3_pooii")
