@@ -22,9 +22,6 @@ GameManager="*res://game_manager.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-
-[dotnet]
-
 project/assembly_name="Accessible Tiny Knight"
 
 [input]

@@ -19,6 +19,9 @@ extends CharacterBody2D
 @onready var sword_area: Area2D = $SwordArea
 @onready var hitbox_area: Area2D = $HitboxArea
 @onready var health_progress_bar: ProgressBar = $HealthProgressBar
+@onready var footsteps_audio: AudioStreamPlayer2D = $Footsteps
+@onready var sword_audio: AudioStreamPlayer = $Sword
+@onready var player_hurt_audio: AudioStreamPlayer = $PlayerHurt
 
 var input_vector: Vector2 = Vector2(0, 0)
 var is_running: bool = false
@@ -28,16 +31,16 @@ var attack_cooldown: float = 0.0
 var hitbox_cooldown: float = 0.0
 var ritual_cooldown: float = 0.0
 
-
 signal meat_collected(value: int)
-
 
 func _ready():
 	GameManager.player = self
 	meat_collected.connect(func(value: int):
 		GameManager.meat_counter += 1
 	)
-
+	footsteps_audio.stream = preload("res://áudio/RPG_Essentials_Free/08_Step_rock_02.wav")
+	sword_audio.stream = preload("res://áudio/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav")
+	player_hurt_audio.stream = preload("res://áudio/homemadeoof-47509.mp3")
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -65,7 +68,6 @@ func _process(delta: float) -> void:
 	health_progress_bar.max_value = max_health
 	health_progress_bar.value = health
 
-
 func _physics_process(delta: float) -> void:
 	# Modificar a velocidade
 	var target_velocity = input_vector * speed * 100.0
@@ -73,7 +75,6 @@ func _physics_process(delta: float) -> void:
 		target_velocity *= 0.25
 	velocity = lerp(velocity, target_velocity, 0.05)
 	move_and_slide()
-
 
 func update_attack_cooldown(delta: float) -> void:
 	# Atualizar temporizador do ataque
@@ -83,7 +84,6 @@ func update_attack_cooldown(delta: float) -> void:
 			is_attacking = false
 			is_running = false
 			animation_player.play("idle")
-
 
 func update_ritual(delta: float) -> void:
 	# Atualizar temporizador
@@ -95,7 +95,6 @@ func update_ritual(delta: float) -> void:
 	var ritual = ritual_scene.instantiate()
 	ritual.damage_amount = ritual_damage
 	add_child(ritual)
-
 
 func read_input() -> void:
 	# Obter o input vector
@@ -111,7 +110,14 @@ func read_input() -> void:
 	# Atualizar o is_running
 	was_running = is_running
 	is_running = not input_vector.is_zero_approx()
-
+	
+	# Reproduzir som dos passos com panning
+	if is_running:
+		if not footsteps_audio.playing:
+			footsteps_audio.play()
+		footsteps_audio.pan = input_vector.x
+	else:
+		footsteps_audio.stop()
 
 func play_run_idle_animation() -> void:
 	# Tocar animação
@@ -122,14 +128,12 @@ func play_run_idle_animation() -> void:
 			else:
 				animation_player.play("idle")
 
-
 func rotate_sprite() -> void:
 	# Girar sprite
 	if input_vector.x > 0:
 		sprite.flip_h = false
 	elif input_vector.x < 0:
 		sprite.flip_h = true
-
 
 func attack() -> void:
 	if is_attacking:
@@ -138,12 +142,14 @@ func attack() -> void:
 	# Tocar animação
 	animation_player.play("attack_side_1")
 	
+	# Tocar som de ataque
+	sword_audio.play()
+	
 	# Configurar temporizador
 	attack_cooldown = 0.6
 	
 	# Marcar ataque
 	is_attacking = true
-
 
 func deal_damage_to_enemies() -> void:
 	var bodies = sword_area.get_overlapping_bodies()
@@ -161,7 +167,6 @@ func deal_damage_to_enemies() -> void:
 			if dot_product >= 0.3:
 				enemy.damage(sword_damage)
 
-
 func update_hitbox_detection(delta: float) -> void:
 	# Temporizador
 	hitbox_cooldown -= delta
@@ -178,12 +183,14 @@ func update_hitbox_detection(delta: float) -> void:
 			var damage_amount = 1
 			damage(damage_amount)
 
-
 func damage(amount: int) -> void:
 	if health <= 0: return
 	
 	health -= amount
 	print("Você recebeu dano de ", amount, ". A vida total é de ", health, "/", max_health)
+	
+	# Tocar som de dano
+	player_hurt_audio.play()
 	
 	# Piscar o node quando receber dano
 	modulate = Color.RED
@@ -192,11 +199,9 @@ func damage(amount: int) -> void:
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
-	
 	# Processar morte
 	if health <= 0:
 		die()
-
 
 func die() -> void:
 	GameManager.end_game()
@@ -209,15 +214,9 @@ func die() -> void:
 	print("Você morreu!")
 	queue_free()
 
-
-
 func heal(amount: int) -> int:
 	health += amount
 	if health > max_health:
 		health = max_health
 	print("Você recebeu cura de ", amount, ". A vida total é de ", health, "/", max_health)
 	return health
-
-
-
-
