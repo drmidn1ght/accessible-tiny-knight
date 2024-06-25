@@ -112,6 +112,7 @@ func read_input() -> void:
 	is_running = not input_vector.is_zero_approx()
 	
 	# Reproduzir som dos passos com panning
+	
 	if is_running:
 		if not footsteps_audio.playing:
 			footsteps_audio.play()

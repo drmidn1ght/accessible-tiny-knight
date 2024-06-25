@@ -410,3 +410,4 @@ position = Vector2(-657, 2018)
 position = Vector2(-269, 2074)
 
 [node name="GameUI" parent="." instance=ExtResource("3_wx2ey")]
+
