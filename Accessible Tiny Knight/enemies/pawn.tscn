@@ -6,11 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ry1pj6uph82y" path="res://misc/skull.tscn" id="2_deuqp"]
 [ext_resource type="PackedScene" uid="uid://djbg0mm1ruq0t" path="res://misc/meat.tscn" id="3_7uwg5"]
 
-# Node  de áudio 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/male-attack-grunt-45747.mp3"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/ouch-sound-effect-30-11844.mp3"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gd5r"]
 atlas = ExtResource("1_8ouj7")
 region = Rect2(0, 192, 192, 192)
@@ -86,3 +81,9 @@ script = ExtResource("1_5o5nt")
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -54)
+
+# Node de áudio
+
+[node name=PawnSound" type="AudioStreamPlayer" parent="res://audio/male-attack-grunt-45747.mp3"]
+
+[node name="PawnHurtSound" type="AudioStreamPlayer" parent="res://audio/ouch-sound-effect-30-11844.mp3"]

@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dqi15vnrvcmjb" path="res://addons/Tiny Swords/Resources/Sheep/HappySheep_Bouncing.png" id="3_pooii"]
 [ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="4_vr7s0"]
 
-# Node  de áudio 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/sheep-1-89229.mp3"]
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/Sheep Bleating-SoundBible.com-1373580685.wav"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3apl4"]
 atlas = ExtResource("3_pooii")
 region = Rect2(0, 0, 128, 128)
@@ -88,3 +84,9 @@ speed = 1.8
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -38)
+
+# Node de áudio
+
+[node name="SheepSound" type="AudioStreamPlayer" parent="res://audio/sheep-1-89229.mp3"]
+
+[node name="SheepHurtSound" type="AudioStreamPlayer" parent="res://audio/Sheep Bleating-SoundBible.com-1373580685.wav"]

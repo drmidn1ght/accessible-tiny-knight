@@ -4,14 +4,6 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_cdtk4"]
 [ext_resource type="PackedScene" uid="uid://b6wsg8q4fpus6" path="res://misc/ritual.tscn" id="2_2ndn7"]
 [ext_resource type="PackedScene" uid="uid://3urxvd4swjei" path="res://misc/big_skull.tscn" id="2_w7but"]
-
-# Node de áudio 
-
-[node name="Footsteps" type="AudioStreamPlayer2D" parent="res://áudio/RPG_Essentials_Free/08_Step_rock_02.wav   "]
-[node name="Sword" type="AudioStreamPlayer2D" parent="res://áudio/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav   "]
-
-[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="res://áudio/homemadeoof-47509.mp3   "]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ioypi"]
 radius = 14.0357
 
@@ -262,3 +254,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1j1rf")
 value = 75.0
 rounded = true
 show_percentage = false
+
+# Node de áudio 
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="res://áudio/RPG_Essentials_Free/08_Step_rock_02.wav   "]
+
+[node name="Sword" type="AudioStreamPlayer2D" parent="res://áudio/RPG_Essentials_Free/10_Battle_SFX/22_Slash_04.wav   "]
+
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="res://áudio/homemadeoof-47509.mp3   "]
+

@@ -7,11 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://djbg0mm1ruq0t" path="res://misc/meat.tscn" id="3_qa0gw"]
 [ext_resource type="PackedScene" uid="uid://x1fal2eghbtx" path="res://misc/golden_meat.tscn" id="4_d0anx"]
 
-# Node  de áudio 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/goblin-scream-87564.mp3"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="res://audio/Starter Pack-Realist Sound Bank.23/Monster/Monster9.wav]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_slo41"]
 atlas = ExtResource("3_df2rp")
 region = Rect2(0, 192, 192, 192)
@@ -93,3 +88,9 @@ speed = 0.4
 
 [node name="DamageDigitMarker" type="Marker2D" parent="."]
 position = Vector2(0, -69.5)
+
+# Node de áudio
+
+[node name="GoblinSound" type="AudioStreamPlayer" parent="res://audio/goblin-scream-87564.mp3"]
+
+[node name="GoblinHurtSound" type="AudioStreamPlayer" parent="res://audio/Starter Pack-Realist Sound Bank.23/Monster/Monster9.wav]
